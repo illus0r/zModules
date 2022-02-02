@@ -3,7 +3,7 @@ export const PI = /*glsl*/`
 `
 
 export const rnd = /*glsl*/`
-#define rnd(x) fract(54321.987 * sin(987.12345 * x + .1))
+#define rnd(x) fract(1.1e4*sin(mod(111.1*x,3.14)+.1))
 `
 
 export const rnd2D = /*glsl*/`
