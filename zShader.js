@@ -13,11 +13,13 @@ export class ZShaderWrapper {
   /**
    * @param {string} frag
    * @param {number | number[]} [size=8]
+   * @param {number} [type]
    * @returns {Pass}
    */
-  createPass (frag, size) {
+  createPass (frag, size, type) {
     if (frag == null) throw Error('frag is expected')
     if (size == null) size = 8
+    if (type == null) type = this.gl.RGBA32F
 
     const resolution = Array.isArray(size) ? size : [size, size]
     console.debug(resolution)
@@ -29,7 +31,8 @@ export class ZShaderWrapper {
       gl_Position = vec4(position, 0.0, 1.0);
     }`
 
-    return new Pass(this.gl, this.twgl, vert, frag, resolution)
+
+    return new Pass(this.gl, this.twgl, vert, frag, resolution, type)
   }
 }
 
@@ -40,15 +43,16 @@ export class Pass {
    * @param {string} vert
    * @param {string} frag
    * @param {number[]} resolution
+   * @param {number} type
    */
-  constructor (gl, twgl, vert, frag, resolution) {
+  constructor (gl, twgl, vert, frag, resolution, type) {
     this.gl = gl
     this.twgl = twgl
 
     this.resolution = resolution
 
     const program = this.twgl.createProgramInfo(this.gl, [vert, frag])
-    const attachments = [{ internalFormat: this.gl.RGBA32F }]
+    const attachments = [{ internalFormat: type }]
 
     const buffer = this.twgl.createFramebufferInfo(this.gl, attachments, ...resolution)
     const backbuffer = this.twgl.createFramebufferInfo(this.gl, attachments, ...resolution)
