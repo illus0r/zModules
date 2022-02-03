@@ -84,6 +84,8 @@ export class Pass {
     this.twgl.setBuffersAndAttributes(this.gl, this.program, this.positionBuffer)
 
     if (!uniforms.u_resolution) uniforms.u_resolution = this.resolution
+    // uniforms.u_resolution = [this.buffer.width, this.buffer.height]
+    // console.log([this.buffer.width, this.buffer.height])
 
     // self or both
     if (target !== 'screen') uniforms.backbuffer = this.backbuffer.attachments[0]
