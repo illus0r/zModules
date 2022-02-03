@@ -290,3 +290,7 @@ float snoise4D(vec4 v){
                 + dot(m1*m1, vec2( dot( p3, x3 ), dot( p4, x4 ) ) ) ) ;
 }
 `
+
+export const fsnoise = /*glsl*/`
+float fsnoise (vec2 c){return fract(sin(dot(c, vec2(12.9898, 78.233))) * 43758.5453);}
+`
