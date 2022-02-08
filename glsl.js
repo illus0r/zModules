@@ -9,7 +9,7 @@ export const rnd2D = /*glsl*/`
 #define rnd2D(X) fract(1e5*sin(dot(mod(X,PI),vec2(9.,PI))+.1))
 `
 export const rnd3D = /*glsl*/`
-#define rnd3D(X) fract(1e5*sin(dot(mod(X,PI),vec3(1,1.618,PI))+.1))
+#define rnd3D(X) fract(1e5*sin(dot(mod(X,PI),vec3(1.1111,1.618,PI))+.1))
 `
 
 export const rot = /*glsl*/`
