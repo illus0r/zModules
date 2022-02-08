@@ -5,9 +5,11 @@ export const PI = /*glsl*/`
 export const rnd = /*glsl*/`
 #define rnd(x) fract(1.1e4*sin(mod(111.1*x,3.14)+.1))
 `
-
 export const rnd2D = /*glsl*/`
 #define rnd2D(X) fract(1e5*sin(dot(mod(X,PI),vec2(9.,PI))+.1))
+`
+export const rnd3D = /*glsl*/`
+#define rnd3D(X) fract(1e5*sin(dot(mod(X,PI),vec3(1,1.618,PI))+.1))
 `
 
 export const rot = /*glsl*/`
